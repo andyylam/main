@@ -27,8 +27,8 @@ import seedu.address.testutil.PersonBuilder;
  */
 public class RemarkCommandTest {
 
-    private static final String REMARK_STUB = "Some remark";
-    final Remark remark = new Remark("Some remark");
+    private static final String REMARK_STUB = "Some other remark";
+    final Remark remark = new Remark(REMARK_STUB);
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -102,8 +102,6 @@ public class RemarkCommandTest {
 
         RemarkCommand remarkCommand = new RemarkCommand(outOfBoundIndex, new Remark(VALID_REMARK_BOB));
 
-        assertCommandFailure(new RemarkCommand(INDEX_FIRST_PERSON, remark), model,
-                String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_PERSON.getOneBased(), remark));
         assertCommandFailure(remarkCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 }

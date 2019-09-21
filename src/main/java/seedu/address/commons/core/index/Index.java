@@ -43,7 +43,7 @@ public class Index {
      */
     public static Index fromOneBased(int oneBasedIndex) {
         return new Index(oneBasedIndex - 1);
-    }
+}
 
     @Override
     public boolean equals(Object other) {
