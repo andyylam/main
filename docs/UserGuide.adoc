@@ -86,15 +86,14 @@ Redo the previous undone command. The state of the application will revert back 
 
 Format:  `redo`
 
-//end::undoredo[]
+// tag::undoredo[]
 
 ==== Error messages
 Displays a useful error message if the input is invalid. For example,
 it should highlight wrong commands, wrong numbers of arguments, or arguments in the wrong format.
 
-=== Module
-
 // tag::addremovemod[]
+=== Module
 
 ==== Assigning a module to a given semester: `addmod`
 Assigns the specified module to a given semester of the current study plan. +
@@ -112,8 +111,7 @@ Examples:
 * `removemod y1s1 CS1101S`
 * `removemod y2s2 CS3244`
 
-//end::addremovemod[]
-// tag::dataclassificationandmanagement1[]
+// end::addremovemod[]
 
 ==== Finding modules using the module code : `findmod`
 Shows which semester the specified module is located at. +
