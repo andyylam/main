@@ -20,16 +20,16 @@ public class ModuleListPanelTest extends GuiUnitTest {
     private static final ObservableList<Module> TYPICAL_MODULES =
             FXCollections.observableList(new ArrayList<>(Arrays.asList(CS1101S, CS2102, ST2334)));
 
-    private ModuleListPanelHandle ModuleListPanelHandle;
+    private ModuleListPanelHandle moduleListPanelHandle;
 
     @Test
     public void display() {
         initUi(TYPICAL_MODULES);
 
         for (int i = 0; i < TYPICAL_MODULES.size(); i++) {
-            ModuleListPanelHandle.navigateToCard(TYPICAL_MODULES.get(i));
+            moduleListPanelHandle.navigateToCard(TYPICAL_MODULES.get(i));
             Module expectedModule = TYPICAL_MODULES.get(i);
-            SimpleModuleCardHandle actualCard = ModuleListPanelHandle.getModuleCardHandle(i);
+            SimpleModuleCardHandle actualCard = moduleListPanelHandle.getModuleCardHandle(i);
 
             assertCardDisplaysModule(expectedModule, actualCard);
         }
@@ -40,10 +40,10 @@ public class ModuleListPanelTest extends GuiUnitTest {
      * Also shows the {@code Stage} that displays only {@code ModuleListPanel}.
      */
     private void initUi(ObservableList<Module> backingList) {
-        ModuleListPanel ModuleListPanel = new ModuleListPanel(backingList);
-        uiPartExtension.setUiPart(ModuleListPanel);
+        ModuleListPanel moduleListPanel = new ModuleListPanel(backingList);
+        uiPartExtension.setUiPart(moduleListPanel);
 
-        ModuleListPanelHandle = new ModuleListPanelHandle(getChildNode(ModuleListPanel.getRoot(),
+        moduleListPanelHandle = new ModuleListPanelHandle(getChildNode(moduleListPanel.getRoot(),
                 guitests.guihandles.ModuleListPanelHandle.MODULE_LIST_VIEW_ID));
     }
 }
