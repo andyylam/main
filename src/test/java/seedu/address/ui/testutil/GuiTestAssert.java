@@ -8,6 +8,7 @@ import guitests.guihandles.ModuleCardHandle;
 import guitests.guihandles.ModuleListPanelHandle;
 import guitests.guihandles.ModulePillHandle;
 import guitests.guihandles.ResultDisplayHandle;
+import guitests.guihandles.SimpleModuleCardHandle;
 import seedu.address.model.module.Module;
 
 /**
@@ -25,6 +26,15 @@ public class GuiTestAssert {
     }
 
     /**
+     * Asserts that {@code actualCard} displays the same values as {@code expectedCard}.
+     */
+    public static void assertCardEquals(SimpleModuleCardHandle expectedCard, SimpleModuleCardHandle actualCard) {
+        assertEquals(expectedCard.getMcCount(), actualCard.getMcCount());
+        assertEquals(expectedCard.getName(), actualCard.getName());
+        assertEquals(expectedCard.getTags(), actualCard.getTags());
+    }
+
+    /**
      * Asserts that {@code actualCard} displays the details of {@code expectedModule}.
      */
     public static void assertCardDisplaysModule(Module expectedModule, ModuleCardHandle actualCard) {
@@ -37,36 +47,48 @@ public class GuiTestAssert {
     }
 
     /**
-     * Asserts that {@code actualCard} displays the details of {@code expectedModule}.
+     * Asserts that {@code actualSimpleCard} displays the details of {@code expectedModule}.
+     */
+    public static void assertCardDisplaysModule(Module expectedModule, SimpleModuleCardHandle actualSimpleCard) {
+        assertEquals(expectedModule.getModuleCode() + " "
+                + expectedModule.getName().toString(), actualSimpleCard.getName());
+        assertEquals("" + expectedModule.getMcCount(), actualSimpleCard.getMcCount());
+        assertEquals("" + expectedModule.getMcCount(), actualSimpleCard.getMcCount());
+        assertEquals(expectedModule.getTags().asListOfStrings(), actualSimpleCard.getTags());
+    }
+
+
+    /**
+     * Asserts that {@code actualPill} displays the details of {@code expectedModule}.
      */
     public static void assertPillDisplaysModule(Module expectedModule, ModulePillHandle actualPill) {
         assertEquals(expectedModule.getModuleCode().toString(), actualPill.getName());
     }
 
     /**
-     * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
+     * Asserts that the list in {@code moduleListPanelHandle} displays the details of {@code modules} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(ModuleListPanelHandle personListPanelHandle, Module... persons) {
-        for (int i = 0; i < persons.length; i++) {
-            personListPanelHandle.navigateToCard(i);
-            assertCardDisplaysModule(persons[i], personListPanelHandle.getModuleCardHandle(i));
+    public static void assertListMatching(ModuleListPanelHandle moduleListPanelHandle, Module... modules) {
+        for (int i = 0; i < modules.length; i++) {
+            moduleListPanelHandle.navigateToCard(i);
+            assertCardDisplaysModule(modules[i], moduleListPanelHandle.getModuleCardHandle(i));
         }
     }
 
     /**
-     * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
+     * Asserts that the list in {@code moduleListPanelHandle} displays the details of {@code modules} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(ModuleListPanelHandle personListPanelHandle, List<Module> persons) {
-        assertListMatching(personListPanelHandle, persons.toArray(new Module[0]));
+    public static void assertListMatching(ModuleListPanelHandle moduleListPanelHandle, List<Module> modules) {
+        assertListMatching(moduleListPanelHandle, modules.toArray(new Module[0]));
     }
 
     /**
-     * Asserts the size of the list in {@code personListPanelHandle} equals to {@code size}.
+     * Asserts the size of the list in {@code moduleListPanelHandle} equals to {@code size}.
      */
-    public static void assertListSize(ModuleListPanelHandle personListPanelHandle, int size) {
-        int numberOfPeople = personListPanelHandle.getListSize();
+    public static void assertListSize(ModuleListPanelHandle moduleListPanelHandle, int size) {
+        int numberOfPeople = moduleListPanelHandle.getListSize();
         assertEquals(size, numberOfPeople);
     }
 

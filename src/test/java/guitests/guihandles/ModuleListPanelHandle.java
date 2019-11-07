@@ -23,21 +23,20 @@ public class ModuleListPanelHandle extends NodeHandle<ListView<Module>> {
     }
 
     /**
-     * Returns a handle to the selected {@code ModuleCardHandle}.
+     * Returns a handle to the selected {@code SimpleModuleCardHandle}.
      * A maximum of 1 item can be selected at any time.
      *
      * @throws AssertionError        if no card is selected, or more than 1 card is selected.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public ModuleCardHandle getHandleToSelectedCard() {
+    public SimpleModuleCardHandle getHandleToSelectedCard() {
         List<Module> selectedModuleList = getRootNode().getSelectionModel().getSelectedItems();
-
         if (selectedModuleList.size() != 1) {
             throw new AssertionError("Module list size expected 1.");
         }
 
         return getAllCardNodes().stream()
-                .map(ModuleCardHandle::new)
+                .map(SimpleModuleCardHandle::new)
                 .filter(handle -> handle.equals(selectedModuleList.get(0)))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
@@ -103,9 +102,9 @@ public class ModuleListPanelHandle extends NodeHandle<ListView<Module>> {
      *
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public ModuleCardHandle getModuleCardHandle(int index) {
+    public SimpleModuleCardHandle getModuleCardHandle(int index) {
         return getAllCardNodes().stream()
-                .map(ModuleCardHandle::new)
+                .map(SimpleModuleCardHandle::new)
                 .filter(handle -> handle.equals(getModule(index)))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
@@ -121,7 +120,6 @@ public class ModuleListPanelHandle extends NodeHandle<ListView<Module>> {
      * visible in the listview may also be in the scene graph.
      */
     private Set<Node> getAllCardNodes() {
-        System.out.println(guiRobot.lookup(CARD_PANE_ID).queryAll().size());
         return guiRobot.lookup(CARD_PANE_ID).queryAll();
     }
 
