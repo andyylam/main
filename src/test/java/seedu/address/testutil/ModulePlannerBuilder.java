@@ -38,6 +38,9 @@ public class ModulePlannerBuilder {
         return this;
     }
 
+    /**
+     * Builds the {@code ModulePlanner}.
+     */
     public ModulePlanner build() {
         modulePlanner.activateFirstStudyPlan();
         return modulePlanner;

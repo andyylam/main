@@ -23,10 +23,13 @@ public class CommandBoxTest extends GuiUnitTest {
     private static final String COMMAND_THAT_SUCCEEDS = ListAllStudyPlansCommand.COMMAND_WORD;
     private static final String COMMAND_THAT_FAILS = "invalid command";
     private final ReadOnlyModulePlanner modulePlanner =
-            new ModulePlannerBuilder().withStudyPlans(SP_1, SP_2, SP_3).build();
+            new ModulePlannerBuilder().withStudyPlans(SP_1.clone(), SP_2.clone(), SP_3.clone()).build();
     private ArrayList<String> defaultStyleOfCommandBox;
     private ArrayList<String> errorStyleOfCommandBox;
     private CommandBoxHandle commandBoxHandle;
+
+    public CommandBoxTest() throws CloneNotSupportedException {
+    }
 
     @BeforeEach
     public void setUp() {

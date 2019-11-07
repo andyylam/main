@@ -15,37 +15,37 @@ public class ModulePillTest extends GuiUnitTest {
     @Test
     public void display() {
         Module module = new ModuleBuilder().build();
-        ModulePill ModulePill = new ModulePill(module);
-        uiPartExtension.setUiPart(ModulePill);
-        assertPillDisplay(ModulePill, module);
+        ModulePill modulePill = new ModulePill(module);
+        uiPartExtension.setUiPart(modulePill);
+        assertPillDisplay(modulePill, module);
     }
 
     @Test
     public void equals() {
         Module module = new ModuleBuilder().build();
-        ModulePill ModulePill = new ModulePill(module);
+        ModulePill modulePill = new ModulePill(module);
 
         ModulePill copy = new ModulePill(module);
-        assertTrue(ModulePill.equals(copy));
+        assertTrue(modulePill.equals(copy));
 
-        assertTrue(ModulePill.equals(ModulePill));
+        assertTrue(modulePill.equals(modulePill));
 
-        assertFalse(ModulePill.equals(null));
+        assertFalse(modulePill.equals(null));
 
         // different types -> returns false
-        assertFalse(ModulePill.equals(0));
+        assertFalse(modulePill.equals(0));
     }
 
     /**
      * Asserts that {@code ModulePill} displays the details of {@code expectedModule} correctly and matches
      * {@code expectedId}.
      */
-    private void assertPillDisplay(ModulePill ModulePill, Module expectedModule) {
+    private void assertPillDisplay(ModulePill modulePill, Module expectedModule) {
         guiRobot.pauseForHuman();
 
-        ModulePillHandle ModulePillHandle = new ModulePillHandle(ModulePill.getRoot());
+        ModulePillHandle modulePillHandle = new ModulePillHandle(modulePill.getRoot());
 
         // verify module details are displayed correctly
-        assertPillDisplaysModule(expectedModule, ModulePillHandle);
+        assertPillDisplaysModule(expectedModule, modulePillHandle);
     }
 }
