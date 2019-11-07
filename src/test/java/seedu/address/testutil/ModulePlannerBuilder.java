@@ -39,6 +39,7 @@ public class ModulePlannerBuilder {
     }
 
     public ModulePlanner build() {
+        modulePlanner.activateFirstStudyPlan();
         return modulePlanner;
     }
 }
