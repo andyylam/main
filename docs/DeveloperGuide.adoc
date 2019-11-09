@@ -234,7 +234,8 @@ image::CommitActivityDiagram.png[]
 ** Cons: Tedious because there are a lot of commands and we must ensure that the implementation of each individual command are correct.
 
 //end::undoredo[]
-// tag:parser[]
+
+// tag::parser[]
 
 === Parser
 ==== Current Implementation
@@ -269,7 +270,7 @@ Step 5. The `ArgumentMultiMap` is then used to obtain the arguments to create an
 ** Pros: Easy to implement.
 ** Cons: User has to type in prefixes, which will reduce ease and efficiency of application use.
 
-//end:parser[]
+//end::parser[]
 
 // tag::versiontracking[]
 === Version Tracking
